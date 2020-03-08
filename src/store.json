@@ -1,0 +1,23 @@
+[
+    {
+        "id": "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1",
+        "type": "Bouldering (Indoor)",
+        "difficulty": "V5",
+        "attempts": 9,
+        "rating": 5
+      },
+      {
+        "id": "b07161a6-ffaf-11e8-8eb2-f2801f1b9fd1",
+        "type": "Bouldering (Indoor)",
+        "difficulty": "V3",
+        "attempts": 15,
+        "rating": 3
+      },
+      {
+        "id": "b07162f0-ffaf-11e8-8eb2-f2801f1b9fd1",
+        "type": "Bouldering (Indoor)",
+        "difficulty": "V3",
+        "attempts": 8,
+        "rating": 3
+      }
+]
