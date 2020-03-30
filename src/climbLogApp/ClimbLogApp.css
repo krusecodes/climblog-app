@@ -1,0 +1,31 @@
+.App {
+    
+    padding-bottom: 5%
+}
+.container {
+    height: 200px;
+    position: relative;
+    border: 2px solid grey;
+    margin-left: 30%;
+    margin-right: 30%;
+  }
+
+.climbCard {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: lightgray;
+   color: white;
+   text-align: center;
+   height: 50px;
+   display: flex;
+}

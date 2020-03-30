@@ -1,8 +1,6 @@
 .fab {
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    position: absolute;
+    width: 60px;
+    height: 60px;
     right: 10px;
     bottom: 10px;
     background-color: #5399FF;
@@ -11,10 +9,12 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    border: solid 1px #0049B2;
+    
+    margin: 0 auto;
+    height: 100%;
   }
   
   .fab:hover {
     box-shadow: 1px 1px 1px 1px #0049B2;
-    border: solid 1px #0049CC;
+    
   }

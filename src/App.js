@@ -14,13 +14,17 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const url = 'http://localhost:3000/feed';
+    const url = 'http://localhost:8000/log';
     const options = {
       method: 'GET',
+      headers: {
+        // "Authorization": "Bearer 601871b7-a853-4c78-827b-d38633f352e9",
+        "Content-Type": "application/json"
+      }
     };
 
     fetch(url, options)
-      .then(res => {
+    .then(res => {
         if(!res.ok) {
           throw new Error('Something went wrong, please try again later.');
         }
@@ -38,7 +42,6 @@ class App extends Component {
           error: err.message
         });
       });
-
   }
 
   setShowAddForm(show) {

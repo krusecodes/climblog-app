@@ -7,7 +7,7 @@ class AddClimb extends Component {
   constructor(props){
     super(props);
     this.state = {
-      climbType: null,
+      climb_type: null,
       difficulty: null,
       attempts: 1,
       rating: 1,
@@ -24,9 +24,9 @@ class AddClimb extends Component {
   //   });
   // }
 
-  climbTypeChanged(climbType) {
+  climbTypeChanged(climb_type) {
     this.setState({
-      climbType
+      climb_type
     });
   }
 
@@ -76,17 +76,22 @@ class AddClimb extends Component {
 // })
 // .catch(err => {
 //   this.setState({
+
 //     error: err.message
 //   });
 // });
 
 handleSubmit(e) {
+  console.log(e);
   e.preventDefault();
-  const climbLog = (({climbType, difficulty, attempts, rating}) =>({climbType, difficulty, attempts, rating}))(this.state);
-  const url = 'http://localhost:3000/feed';
+  const climbLog = (({climb_type, difficulty, attempts, rating}) => ({climb_type, difficulty, attempts, rating}))(this.state);
+  const url = 'http://localhost:8000/log';
   const options = {
     method: 'POST',
-    body: JSON.stringify(climbLog)
+    body: JSON.stringify(climbLog),
+    headers: {
+      "Content-Type": "application/json"
+    }
   }
 
   fetch(url, options)
@@ -98,7 +103,7 @@ handleSubmit(e) {
   })
   .then(data => {
     this.setState({
-      climbType: null,
+      climb_type: null,
         difficulty: null,
         attempts: 1,
         rating: 1
@@ -141,38 +146,37 @@ handleSubmit(e) {
           : "";
   return (
     <div>
+    <h2>Add a Climb</h2>  
+    { error }
     <form className="addclimb__form" onSubmit={e => this.handleSubmit(e)}>
 
-    {/* <label for="img">Select image:</label>
-    <input type="file" id="img" name="img" accept="image/*"/> */}
-
     <select id="Type"
-      value={this.state.climbType}
+      value={this.state.climb_type}
       onChange={e => this.climbTypeChanged(e.target.value)}
     >
-        <option value="Sort by type">type</option>
-        <option value="Top roping">Top roping</option>
-        <option value="Lead climbing">Lead climbing</option>
-        <option value="Sport climbing">Sport climbing</option>
-        <option value="Trad climbing">Trad climbing</option>
-        <option value="Bouldering">Bouldering</option>
-        <option value="Free solo climbing">Free solo climbing</option>
-        <option value="Deep water soloing">Deep water soloing</option>
+        <option>type</option>
+        <option>Top roping</option>
+        <option>Lead climbing</option>
+        <option>Sport climbing</option>
+        <option>Trad climbing</option>
+        <option>Bouldering</option>
+        <option>Free solo climbing</option>
+        <option>Deep water soloing</option>
   </select>
 
     <select id="Type"
       value={this.state.difficulty}
       onChange={e => this.difficultyChanged(e.target.value)}
     >
-        <option value="Sort by difficulty">difficulty</option>
-        <option value="Option1">V1</option>
-        <option value="Option2">V2</option>
-        <option value="Option3">V3</option>
-        <option value="Option4">V4</option>
-        <option value="Option5">V5</option>
-        <option value="Option6">V6</option>
-        <option value="Option7">V7</option>
-        <option value="Option8">V8</option>
+        <option >difficulty</option>
+        <option >V1</option>
+        <option>V2</option>
+        <option >V3</option>
+        <option >V4</option>
+        <option >V5</option>
+        <option>V6</option>
+        <option >V7</option>
+        <option >V8</option>
         <option>V9</option>
         <option>V10</option>
         <option>V11</option>
@@ -201,9 +205,6 @@ handleSubmit(e) {
         value={this.state.rating}
         onChange={e => this.ratingChanged(e.target.value)}
     />
-
-  {/* <label for="fname">What I learned</label>
-  <input type="text" id="fname" name="firstname" placeholder="Flag left foot..."/> */}
 
 <div className="addbookmark__buttons">
   <button onClick={e => this.props.showForm(false)}>Cancel</button>
