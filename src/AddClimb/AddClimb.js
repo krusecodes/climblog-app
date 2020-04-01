@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './addclimb.css'
-// import ClimbData from '../store.json'
-
 
 class AddClimb extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       climb_type: null,
@@ -13,16 +11,6 @@ class AddClimb extends Component {
       rating: 1,
     }
   }
-
-  // handleSubmit(event) {
-  //   event.preventDefault();
-  //   const data = new FormData(event.target);
-    
-  //   fetch('/api/form-submit-url', {
-  //     method: 'POST',
-  //     body: data,
-  //   });
-  // }
 
   climbTypeChanged(climb_type) {
     this.setState({
@@ -47,39 +35,6 @@ class AddClimb extends Component {
       rating
     });
   }
-
-// handleSubmit(e) {
-//   e.preventDefault();
-//   const climbLog = (({climbType, difficulty, attempts, rating}) =>({title, url, description, rating}))(this.state);
-//   const url = {ClimbData};
-//   const options = {
-//     method: 'POST',
-//     body: JSON.stringify(climbLog)
-//   }
-// };
-
-// fetch(url, options)
-// .then(res => {
-//   if(!res.ok) {
-//     throw new Error('Something went wrong, please try again later');
-//   }
-//   return res.json();
-// })
-// .then(data => {
-//   this.setState({
-//     climbType: null,
-//       difficulty: null,
-//       attempts: 1,
-//       rating: 1
-//   });
-//   this.props.handleAdd(climbLog);
-// })
-// .catch(err => {
-//   this.setState({
-
-//     error: err.message
-//   });
-// });
 
 handleSubmit(e) {
   console.log(e);
@@ -116,29 +71,6 @@ handleSubmit(e) {
     });
   });  
 };
-
-//   fetch(url, options)
-//     .then(res => {
-//       if(!res.ok) {
-//         throw new Error('Something went wrong, please try again later');
-//       }
-//       return res.json();
-//     })
-//     .then(data => {
-//       this.setState({
-//         title: "",
-//         url: "",
-//         description: "",
-//         rating: 1
-//       });
-//       this.props.handleAdd(bookmark);
-//     })
-//     .catch(err => {
-//       this.setState({
-//         error: err.message
-//       });
-//     });
-// }
 
   render() {  
     const error = this.state.error

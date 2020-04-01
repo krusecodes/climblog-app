@@ -7,7 +7,7 @@ class ClimbFeed extends Component {
   render() {
     {}
     // const climbs = this.props.climbs.map((log, i) => log);
-    const climbs = this.props.climbs.map((log, i) => {return <Log { ...log } key={i}/>});
+    const climbs = this.props.climbs.map((log, i) => {return <Log { ...log } key={i} handleDeleteLog={this.props.handleDeleteLog}/>});
     // console.log(climbs)      
     return (
       <div className="bookmarkList">

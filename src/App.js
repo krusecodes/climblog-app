@@ -21,7 +21,7 @@ class App extends Component {
         // "Authorization": "Bearer 601871b7-a853-4c78-827b-d38633f352e9",
         "Content-Type": "application/json"
       }
-    };
+    }; 
 
     fetch(url, options)
     .then(res => {
@@ -62,7 +62,10 @@ class App extends Component {
           ? <AddClimb 
                 showForm={show => this.setShowAddForm(show)} 
                 handleAdd={bookmark => this.addBookmark(bookmark)}/>
-          : <ClimbLogApp climbs={this.state.climbs} showForm={show => this.setShowAddForm(show)}/>; 
+          : <ClimbLogApp 
+              climbs={this.state.climbs} 
+              showForm={show => this.setShowAddForm(show)} 
+              handleDeleteLog={this.state.handleDeleteLog}/>;          
     return (
       <div className="App">
         {page}

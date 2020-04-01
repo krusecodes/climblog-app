@@ -10,7 +10,9 @@ class ClimbLogApp extends Component {
     return (
       <div className="bookmarkApp">
           <h2>ClimbLog</h2>
-          <ClimbFeed climbs={this.props.climbs}/>  
+          <ClimbFeed 
+            climbs={this.props.climbs} 
+          />  
           <Fab showForm={this.props.showForm}/>
       </div>
     );
