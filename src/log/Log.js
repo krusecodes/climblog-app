@@ -1,57 +1,93 @@
 import React, { Component } from 'react';
 import './log.css';
 
+class Log extends Component {
 
-class ClimbFeed extends Component {
-  state = {
-    Log: [],
-};
+////
 
-  static defaultProps ={
-    onDeleteNote: () => {},
-  }
+  // state = {
+  //   Log: [],
+  // };
 
-  handleClickDelete = e => {
-    e.preventDefault()
-    const logId = this.props.id
+/////  
+
+/////
+
+  // static defaultProps ={
+  //   onDeleteNote: () => {},
+  // }
+
+/////  
+
+  // var removeClimb = React.createClass({
+  //   onClick: function(e){
+  //     handleClickDelete(e)
+  //     climbs(this.props.climbs)
+  //   }
+  // })
+
+  /////
+      // handleClickDelete = e => {
+      //   e.preventDefault()
+      //   const logId = this.props.id
+      //   console.log(logId);
+      
+      // // handleDeleteNote = noteId => {
+      // //     this.setState({
+      // //         notes: this.state.notes.filter(note => note.id !== noteId)
+      // //     });
+      // // };  
+    
+      //   fetch(`http://localhost:8000/log/${logId}`, {
+      //     method: 'DELETE',
+      //     // method: 'GET',
+      //     headers: {
+      //       'content-type': 'application/json'
+      //     },
+      //   })
+      //     .then(res => {
+      //       if (!res.ok)
+      //         return res.json().then(e => Promise.reject(e))
+      //       return res.json()
+      //     })
+      //     .then(() => {
+      //       this.handleDeleteLog(logId)
+      //       // allow parent to perform extra behaviour
+      //       this.onDeleteNote(logId)
+      //     })
+      //     // .then(() => {
+      //     //   this.props.climbs();
+      //     // })
+      //     .catch(error => {
+      //       console.error({ error })
+      //     })
+      // }
   
-  // handleDeleteNote = noteId => {
-  //     this.setState({
-  //         notes: this.state.notes.filter(note => note.id !== noteId)
-  //     });
-  // };  
+/////
 
-    fetch(`http://localhost:8000/log/${logId}`, {
-      method: 'DELETE',
-      headers: {
-        'content-type': 'application/json'
-      },
-    })
-      .then(res => {
-        if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-        return res.json()
-      })
-      .then(() => {
-        this.handleDeleteLog(logId)
-        // allow parent to perform extra behaviour
-        this.onDeleteNote(logId)
-      })
-      .catch(error => {
-        console.error({ error })
-      })
-  }
+
   render() {    
+    console.log(this.props);
+    const {
+      climb_type,
+      difficulty,
+      attempts,
+      rating,
+      id,
+      what_i_learned
+    } = this.props.log
     return (
       <div className="Log">
         <div className="Log_row">
           <div className="Log_title">
-              <h3>Type: {this.props.climb_type}</h3>
-              <h3>Difficulty: {this.props.difficulty}</h3>
-              <h3>Attempts: {this.props.attempts}</h3>
-              <h3>Rating: {this.props.rating}</h3> 
-              <h3>Rating: {this.props.id}</h3> 
-              <button onClick={(e) => this.handleClickDelete(e)}>Delete</button>
+              <h3>Type: {climb_type}</h3>
+              <h3>Difficulty: {difficulty}</h3>
+              <h3>Attempts: {attempts}</h3>
+              <h3>Rating: {rating}</h3> 
+              <h3>What I learned: {what_i_learned}</h3>
+              <h3>Rating: {id}</h3> 
+              <button onClick={(e) => this.props.handleClickDelete(id)}>
+              Delete</button>
           </div>
         </div>      
       </div>
@@ -59,7 +95,7 @@ class ClimbFeed extends Component {
   }
 }
 
-export default ClimbFeed;
+export default Log;
 
 // ClimbFeed.defaultProps = {
 //   Log: []

@@ -5,10 +5,7 @@ class AddClimb extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      climb_type: null,
-      difficulty: null,
-      attempts: 1,
-      rating: 1,
+      data: []
     }
   }
 
@@ -36,10 +33,18 @@ class AddClimb extends Component {
     });
   }
 
+  what_i_learnedChanged(what_i_learned) {
+    this.setState({
+      what_i_learned
+    });
+  }
+
 handleSubmit(e) {
   console.log(e);
   e.preventDefault();
-  const climbLog = (({climb_type, difficulty, attempts, rating}) => ({climb_type, difficulty, attempts, rating}))(this.state);
+  console.log(this.state);
+  
+  const climbLog = (({ climb_type, difficulty, attempts, rating, what_i_learned}) => ({ climb_type, difficulty, attempts, rating, what_i_learned}))(this.state);
   const url = 'http://localhost:8000/log';
   const options = {
     method: 'POST',
@@ -57,13 +62,17 @@ handleSubmit(e) {
     return res.json();
   })
   .then(data => {
-    this.setState({
-      climb_type: null,
-        difficulty: null,
-        attempts: 1,
-        rating: 1
-    });
-    this.props.handleAdd(climbLog);
+    // this.setState({
+    //   climb_type: null,
+    //     difficulty: null,
+    //     attempts: 1,
+    //     rating: 1,
+    //     what_i_learned: null
+    // });
+    console.log(data);
+    
+    this.setState(data);
+    this.props.handleAdd(data);
   })
   .catch(err => {
     this.setState({
@@ -83,7 +92,7 @@ handleSubmit(e) {
     <form className="addclimb__form" onSubmit={e => this.handleSubmit(e)}>
 
     <select id="Type"
-      value={this.state.climb_type}
+      value={this.state.data.climb_type}
       onChange={e => this.climbTypeChanged(e.target.value)}
     >
         <option>type</option>
@@ -97,7 +106,7 @@ handleSubmit(e) {
   </select>
 
     <select id="Type"
-      value={this.state.difficulty}
+      value={this.state.data.difficulty}
       onChange={e => this.difficultyChanged(e.target.value)}
     >
         <option >difficulty</option>
@@ -123,7 +132,7 @@ handleSubmit(e) {
         id="rating" 
         min="1"
         max="100"
-        value={this.state.attempts}
+        value={this.state.data.attempts}
         onChange={e => this.attemptsChanged(e.target.value)}    
     />
 
@@ -134,9 +143,18 @@ handleSubmit(e) {
         id="rating" 
         min="1"
         max="5"
-        value={this.state.rating}
+        value={this.state.data.rating}
         onChange={e => this.ratingChanged(e.target.value)}
     />
+
+  <label htmlFor="what_i_learned">What I learned: </label>
+    <input 
+        type="text" 
+        name="learning" 
+        id="learning" 
+        value={this.state.data.what_i_learnedChanged}
+        onChange={e => this.what_i_learnedChanged(e.target.value)}
+    />  
 
 <div className="addbookmark__buttons">
   <button onClick={e => this.props.showForm(false)}>Cancel</button>

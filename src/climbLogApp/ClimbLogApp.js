@@ -6,14 +6,16 @@ import Fab from '../fab/fab';
 
 class ClimbLogApp extends Component {
   render() {
-    console.log(this.props.clim)
+    console.log(this.props);
+    // console.log(this.props.clim)
     return (
       <div className="bookmarkApp">
-          <h2>ClimbLog</h2>
-          <ClimbFeed 
-            climbs={this.props.climbs} 
-          />  
-          <Fab showForm={this.props.showForm}/>
+        <h2>ClimbLog</h2>
+        <ClimbFeed
+          climbs={this.props.climbs}
+          data={this.props.data}
+        />
+        <Fab showForm={this.props.showForm} />
       </div>
     );
   }
@@ -28,12 +30,12 @@ export default ClimbLogApp;
 //       <div className="App">
 //         {ClimbData.map((climbDetail, index)=> {
 //             return <div className="container"><div className="climbCard">
-                
+
                 // <h3>Type: {climbDetail.type}</h3>
                 // <h3>Difficulty: {climbDetail.difficulty}</h3>
                 // <h3>Attempts: {climbDetail.attempts}</h3>
                 // <h3>Rating: {climbDetail.rating}</h3>
-                
+
 //                 </div>
 //                 </div>
 //         })}
