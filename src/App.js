@@ -13,12 +13,11 @@ class App extends Component {
     };
   }
 
-  //wrap fetch in a function
-  //call function with this.functionName
-  //pass that function to climbFeed
-
   componentDidMount() {
-    
+    this.loadData();
+  }
+
+  loadData = () => {
     const url = 'http://localhost:8000/log';
     const options = {
       method: 'GET',
@@ -44,11 +43,13 @@ class App extends Component {
         });
       })
       .catch(err => {
-        this.setState({
-          error: err.message
-        });
+        console.log(err);
+        
+        // this.setState({
+        //   error: err.message
+        // });
       });
-}
+  }
 
   setShowAddForm(show) {
     this.setState({
@@ -65,15 +66,14 @@ class App extends Component {
 
   render() {
     const page = this.state.showAddForm
-      ? <AddClimb
-        showForm={show => this.setShowAddForm(show)}
-        handleAdd={bookmark => this.addBookmark(bookmark)} />
-      : <ClimbLogApp
-        climbs={this.state.climbs}
-        showForm={show => this.setShowAddForm(show)}
-        handleDeleteLog={this.state.handleDeleteLog}
-        data={this.state.data}
-      />;
+          ? <AddClimb 
+                showForm={show => this.setShowAddForm(show)} 
+                handleAdd={bookmark => this.addBookmark(bookmark)}/>
+          : <ClimbLogApp 
+              climbs={this.state.climbs} 
+              loadData={this.loadData}
+              showForm={show => this.setShowAddForm(show)}/>;
+              // handleDeleteLog={this.state.handleDeleteLog}          
     return (
       <div className="App">
         {page}

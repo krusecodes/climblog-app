@@ -3,6 +3,10 @@ import './log.css';
 
 class Log extends Component {
 
+refreshPage() {
+    window.location.reload(false);
+}
+
 ////
 
   // state = {
@@ -86,7 +90,10 @@ class Log extends Component {
               <h3>Rating: {rating}</h3> 
               <h3>What I learned: {what_i_learned}</h3>
               <h3>Rating: {id}</h3> 
-              <button onClick={(e) => this.props.handleClickDelete(id)}>
+              <button 
+                onClick={(e) => this.props.handleClickDelete(id)}
+                // onClick={this.refreshPage}            
+              >
               Delete</button>
           </div>
         </div>      

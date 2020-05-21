@@ -5,7 +5,8 @@ class AddClimb extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      selectDifficulty: []
     }
   }
 
@@ -81,10 +82,35 @@ handleSubmit(e) {
   });  
 };
 
+
   render() {  
     const error = this.state.error
           ? <div className="error">{this.state.error}</div>
           : "";
+    // switch (difficulty){
+    //       case "Top roping":
+    //         <select id="Type"
+    //           value={this.state.data.difficulty}
+    //           onChange={e => this.difficultyChanged(e.target.value)}
+    //         >
+    //           <option>Difficulty</option>
+    //           <option>V1</option>
+    //           <option>V2</option>
+    //           <option>V3</option>
+    //           <option>V4</option>
+    //           <option>V5</option>
+    //           <option>V6</option>
+    //           <option>V7</option>
+    //           <option>V8</option>
+    //           <option>V9</option>
+    //           <option>V10</option>
+    //           <option>V11</option>
+    //           <option>V12</option>
+    //           <option>V13</option>
+    //         </select>
+    //         break;
+          
+    //       }       
   return (
     <div>
     <h2>Add a Climb</h2>  

@@ -14,6 +14,7 @@ class ClimbLogApp extends Component {
         <ClimbFeed
           climbs={this.props.climbs}
           data={this.props.data}
+          loadData={this.props.loadData}
         />
         <Fab showForm={this.props.showForm} />
       </div>
